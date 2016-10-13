@@ -1,0 +1,23 @@
+"/photos/html/:query/":
+  headers:
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: public max-age=31536000
+    Content-Type: text/html
+  run: >
+    curl 'http://search.aol.com/aol/image?s_it=sb-top&s_chn=prt_btest-min-g&v_t=comsearch&q=${ this.params.query }' -H 'Pragma: no-cache' -H 'DNT: 1' -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8,es;q=0.6,hi;q=0.4,it;q=0.2' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Referer: http://search.aol.com/aol/image?q=potato&s_it=searchtabs&s_chn=prt_btest-min-g&v_t=comsearch' -H 'Cookie: AMCV_6B25357E519160E40A490D44%40AdobeOrg=1256414278%7CMCMID%7C32668774514560926054202268594022831296%7CMCAID%7CNONE; s_sq=aolsvc%3D%2526pid%253Dacm%252520%25253A%252520homepage%252520main%2526pidt%253D1%2526oid%253DSEARCH%2526oidt%253D3%2526ot%253DSUBMIT; s_guid="27c142b92d174616ba5ef453cbebd205:220916"; MVT_TBP=f2|982|20160922|20160922; MVT_TBV=f2|101; x_ms_headers=2f1c:0E9D8F1A277B632A22FF868226D36276; rs_timezone=-14400000; s_cc=true; s_pers=%20s_getnr%3D1474572748480-New%7C1537644748480%3B%20s_nrgvo%3DNew%7C1537644748483%3B' --compressed |
+    pup '.imgItem json{}' |
+    jq -r '.[] | "<img src=\\"\\(.children[0].src)\\"/>"'
+  options:
+    compress: true
+    debug: true
+"/photos/:query/":
+  headers:
+    Access-Control-Allow-Origin: "*"
+    Cache-Control: public max-age=31536000
+    Content-Type: text/json
+  run: >
+    curl 'http://search.aol.com/aol/image?s_it=sb-top&s_chn=prt_btest-min-g&v_t=comsearch&q=${ this.params.query }' -H 'Pragma: no-cache' -H 'DNT: 1' -H 'Accept-Encoding: gzip, deflate, sdch' -H 'Accept-Language: en-US,en;q=0.8,es;q=0.6,hi;q=0.4,it;q=0.2' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Referer: http://search.aol.com/aol/image?q=potato&s_it=searchtabs&s_chn=prt_btest-min-g&v_t=comsearch' -H 'Cookie: AMCV_6B25357E519160E40A490D44%40AdobeOrg=1256414278%7CMCMID%7C32668774514560926054202268594022831296%7CMCAID%7CNONE; s_sq=aolsvc%3D%2526pid%253Dacm%252520%25253A%252520homepage%252520main%2526pidt%253D1%2526oid%253DSEARCH%2526oidt%253D3%2526ot%253DSUBMIT; s_guid="27c142b92d174616ba5ef453cbebd205:220916"; MVT_TBP=f2|982|20160922|20160922; MVT_TBV=f2|101; x_ms_headers=2f1c:0E9D8F1A277B632A22FF868226D36276; rs_timezone=-14400000; s_cc=true; s_pers=%20s_getnr%3D1474572748480-New%7C1537644748480%3B%20s_nrgvo%3DNew%7C1537644748483%3B' --compressed |
+    pup '.imgItem json{}' |
+    jq '[.[] | {title: .children[0].title, thumb:.children[0].src, url:.children[4].text }]'
+  options:
+    compress: true

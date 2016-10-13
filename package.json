@@ -1,0 +1,25 @@
+{
+  "name": "api-serve",
+  "version": "1.0.0",
+  "description": "server that runs cli commands when it gets a request and pipes the output through",
+  "main": "app.js",
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-exec": "^1.1.0",
+    "js-yaml": "^3.6.1",
+    "koa": "^1.2.4",
+    "koa-bodyparser": "^2.2.0",
+    "koa-compress": "^1.0.9",
+    "koa-router": "^5.4.0",
+    "lodash": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api-server"
+  ],
+  "author": "Harsh Singh hsingh23@illinois.edu",
+  "license": "ISC"
+}
