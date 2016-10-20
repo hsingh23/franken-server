@@ -30,7 +30,7 @@ try {
       if (debug) console.log('Process before: ', process_before)
       eval(process_before)
 
-      console.log('Shell code: ', eval('`' + run + '`'))
+      if (debug) console.log('Shell code: ', eval('`' + run + '`'))
       this.body = yield exec(eval('`' + run + '`'))
 
       if (debug) console.log('Process after: ', process_after)
