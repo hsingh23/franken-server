@@ -30,12 +30,13 @@ try {
       if (debug) console.log('Process before: ', process_before)
       eval(process_before)
 
-      console.log('Shell code: ', eval('`' + run + '`'))
+      if (debug) console.log('Shell code: ', eval('`' + run + '`'))
       this.body = yield exec(eval('`' + run + '`'))
 
       if (debug) console.log('Process after: ', process_after)
       eval(process_after)
 
+      console.log (this.response.status + "\t" + this.request.method + "\t" + path)
       yield next
 
     })
@@ -46,7 +47,6 @@ try {
 
 app
   .use(bodyParser())
-  // .use(function *() {this.body = this.request.body})
   .use(router.routes())
   .use(router.allowedMethods())
   .use(compress({
