@@ -46,7 +46,6 @@ try {
 
 app
   .use(bodyParser())
-  // .use(function *() {this.body = this.request.body})
   .use(router.routes())
   .use(router.allowedMethods())
   .use(compress({
