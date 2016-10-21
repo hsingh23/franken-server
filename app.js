@@ -36,6 +36,7 @@ try {
       if (debug) console.log('Process after: ', process_after)
       eval(process_after)
 
+      console.log (this.response.status + "\t" + this.request.method + "\t" + path)
       yield next
 
     })
