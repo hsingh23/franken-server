@@ -6,6 +6,7 @@ var _ = require('lodash')
 var yaml = require('js-yaml')
 var fs = require('fs')
 var exec = require('co-exec')
+var request = require('request')
 var app = koa()
 
 var defaults = {
