@@ -12,9 +12,12 @@ var app = koa()
 var defaults = {
   options: {
     debug: false,
-    compress: false
+    compress: true
   },
-  headers: {},
+  headers: {
+    'Access-Control-Allow-Origin': "*",
+    'Content-Type': 'text/html'
+  },
   process_before: '',
   run: '',
   process_after: ''
@@ -27,6 +30,8 @@ try {
       const {options: {debug, compress}, headers, run, process_before, process_after } = Object.assign({}, defaults, v)
 
       this.set(headers)
+
+      if (debug) console.log('this is set to: ', this)
 
       if (debug) console.log('Process before: ', process_before)
       eval(process_before)

@@ -1,6 +1,9 @@
 # franken-server
-A koa server that loads routes from a yaml file and execs and evals
-commands for maximum justice
+A koa server that loads routes from a yaml file with string interpolation. Execs and evals
+
+commands for maximum justice. It is best used for wrapping apis (to support cors call, or transform the data, or return jsonp), command and control, and rapidly prototyping an idea.
+
+After an initial run with config.yaml, you should look at app.js to see how things a hooked up. Install packages that do what you want. Modify the Dockerfile.
 
 Try it:
 

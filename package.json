@@ -14,9 +14,11 @@
     "lodash": "^4.16.2",
     "request": "^2.78.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon -e js,yaml app.js"
   },
   "keywords": [
     "api-server"
