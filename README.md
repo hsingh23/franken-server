@@ -1,4 +1,7 @@
 # franken-server
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/hsingh23/franken-server.svg)](https://greenkeeper.io/)
+
 A koa server that loads routes from a yaml file with string interpolation. Execs and evals
 
 commands for maximum justice. It is best used for wrapping apis (to support cors call, or transform the data, or return jsonp), command and control, and rapidly prototyping an idea.
