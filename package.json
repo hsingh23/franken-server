@@ -8,7 +8,7 @@
     "co-exec": "^1.1.0",
     "co-request": "^1.0.0",
     "js-yaml": "^3.6.1",
-    "koa": "^1.2.4",
+    "koa": "^2.16.1",
     "koa-bodyparser": "^2.2.0",
     "koa-compress": "^1.0.9",
     "koa-request": "^1.0.0",
